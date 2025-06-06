@@ -1,11 +1,11 @@
 import { defineConfig } from 'drizzle-kit'
 
-import env from './src/env'
+import env from './api/env'
 
 export default defineConfig({
   dialect: 'turso',
-  schema: './src/db/schema.ts',
-  out: './src/db/migrations',
+  schema: './api/db/schema.ts',
+  out: './api/db/migrations',
   dbCredentials: {
     url: env.DATABASE_URL,
     authToken: env.DATABASE_AUTH_TOKEN,

@@ -16,7 +16,7 @@ app.use(express.json()) // Parse JSON bodies
 // 🎯 Routes
 app.get('/', (req, res) => {
   res.json({
-    message: 'Weather App Backend API',
+    message: 'Weather App Backend API on Vercel',
     version: '1.0.0',
     endpoints: {
       searchHistory: '/api/search-history',
