@@ -4,7 +4,9 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 
 // sqlite column types docs: https://orm.drizzle.team/docs/column-types/sqlite
 
-const defaultNow = sql`(cast((julianday('now') - 2440587.5) * 86400000 as integer))`
+// const defaultNow = sql`(cast((julianday('now') - 2440587.5) * 86400000 as integer))`
+
+const defaultNow = sql`(strftime('%s', 'now'))` // Unix seconds
 
 // In sqlite, there is no boolean type, so we use integer with 0 or 1 to represent boolean
 // In sqlite, there is no timestamp type
