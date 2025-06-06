@@ -2,7 +2,8 @@
   "name": "weather_app_express_backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "api/index.js",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "rimraf dist && tsc",
