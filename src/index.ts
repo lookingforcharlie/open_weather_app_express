@@ -1,17 +1,57 @@
+import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
+import searchHistoryRoutes from './routes/historyRoutes'
 
 // Load environment variables from .env file
 dotenv.config()
 
 const app = express()
-const port = parseInt(process.env.PORT || '4750', 10) // ensure port is a number
-const host = '0.0.0.0' // Listen on all network interfaces
+const port = parseInt(process.env.PORT || '4750')
 
+// 🎯 Middleware
+app.use(cors()) // Enable CORS for frontend
+app.use(express.json()) // Parse JSON bodies
+
+// 🎯 Routes
 app.get('/', (req, res) => {
-  res.send('Hello open weather')
+  res.json({
+    message: 'Weather App Backend API',
+    version: '1.0.0',
+    endpoints: {
+      searchHistory: '/api/search-history',
+    },
+  })
 })
 
-app.listen(port, host, () => {
+// Mount search history routes
+app.use('/api/search-history', searchHistoryRoutes)
+
+// 🎯 Error handling middleware
+app.use(
+  (
+    err: any,
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    console.error('Unhandled error:', err)
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error',
+    })
+  }
+)
+
+// 404 handler
+// * as a wildcard gets type error, fixed when changed to /*splat
+app.use('/*splat', (req, res) => {
+  res.status(404).json({
+    success: false,
+    error: 'Route not found',
+  })
+})
+
+app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`)
 })
