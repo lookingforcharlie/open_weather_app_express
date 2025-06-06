@@ -9,11 +9,9 @@ dotenv.config()
 const app = express()
 const port = parseInt(process.env.PORT || '4750')
 
-// 🎯 Middleware
 app.use(cors()) // Enable CORS for frontend
 app.use(express.json()) // Parse JSON bodies
 
-// 🎯 Routes
 app.get('/', (req, res) => {
   res.json({
     message: 'Weather App Backend API on Vercel',
@@ -27,7 +25,7 @@ app.get('/', (req, res) => {
 // Mount search history routes
 app.use('/api/search-history', searchHistoryRoutes)
 
-// 🎯 Error handling middleware
+// Error handling middleware
 app.use(
   (
     err: any,
@@ -55,3 +53,6 @@ app.use('/*splat', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`)
 })
+
+// for deployment on Vercel
+export default app
