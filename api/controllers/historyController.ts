@@ -2,7 +2,7 @@ import { desc, eq } from 'drizzle-orm'
 import { Request, Response } from 'express'
 import { z } from 'zod'
 import db from '../db'
-import { insertSearchHistorySchema, searchHistory } from '../db/schema.js'
+import { insertSearchHistorySchema, searchHistory } from '../db/schema'
 
 export const historyController = {
   // Add new search history

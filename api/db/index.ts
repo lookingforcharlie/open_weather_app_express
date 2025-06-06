@@ -2,11 +2,11 @@
 import { createClient } from '@libsql/client'
 import { drizzle } from 'drizzle-orm/libsql'
 
-import env from '../env.js'
+import env from '../env'
 
 // Imports all exported members from the ./schema file, and Bundles them into a single object called schema
 // since schema.ts exports the tasks table definition, after this import you can access it as: schema.tasks
-import * as schema from './schema.js'
+import * as schema from './schema'
 
 // libSQL can connect to both SQLite files and Turso remote databases
 // LibSQL is a fork of SQLite that offers a bit more functionality compared to standard SQLite
