@@ -50,9 +50,15 @@ app.use('/*splat', (req, res) => {
   })
 })
 
-app.listen(port, () => {
-  console.log(`Server is running on port http://localhost:${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Server is running on port http://localhost:${port}`)
+// })
+// Only start server in development (not on Vercel)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server is running on port http://localhost:${port}`)
+  })
+}
 
 // for deployment on Vercel
 export default app
