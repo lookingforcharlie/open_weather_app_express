@@ -1,7 +1,7 @@
 import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
-import searchHistoryRoutes from './routes/historyRoutes'
+import searchHistoryRoutes from './routes/historyRoutes.js'
 
 // Load environment variables from .env file
 dotenv.config()
@@ -53,6 +53,7 @@ app.use('/*splat', (req, res) => {
 // app.listen(port, () => {
 //   console.log(`Server is running on port http://localhost:${port}`)
 // })
+
 // Only start server in development (not on Vercel)
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
