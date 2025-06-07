@@ -6,7 +6,7 @@ import env from '../env.js'
 
 // Imports all exported members from the ./schema file, and Bundles them into a single object called schema
 // since schema.ts exports the tasks table definition, after this import you can access it as: schema.tasks
-import * as schema from './schema'
+import * as schema from './schema.js'
 
 // libSQL can connect to both SQLite files and Turso remote databases
 // LibSQL is a fork of SQLite that offers a bit more functionality compared to standard SQLite
